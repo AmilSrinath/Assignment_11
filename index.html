@@ -5,6 +5,7 @@
     <title>Index</title>
   <link rel="stylesheet" href="assest/bootstrap-5/css/bootstrap.min.css">
   <link rel="stylesheet" href="assest/CSS/Style.css">
+  <link rel="stylesheet" href="assest/fontawesome-free-6/css/all.min.css">
 </head>
 <body>
 
@@ -157,47 +158,56 @@
     <!--Form-->
     <div id="PlaceOrderTextField" class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col12">
       <form>
-        <div class="mb-3">
-          <label for="Order_id" class="form-label">Order_ID</label>
-          <input type="number" class="form-control" id="Order_id">
+        <div id="placeOrderText1">
+          <div class="mt-lg-2 mb-lg-2 m-lg-3">
+            <label for="Order_id" class="form-label">Order_ID</label>
+            <input type="number" class="form-control" id="Order_id">
+          </div>
         </div>
 
-        <label for="select" class="form-label">Select Item ID</label>
-        <select id="select" class="form-select mb-3" aria-label="Default select example"></select>
+        <div id="placeOrderText2">
+          <div class="m-lg-3">
+            <label for="select" class="form-label">Select Item ID</label>
+            <select id="select" class="form-select mb-3" aria-label="Default select example"></select>
 
-        <div id="ItemNameDiv">
-          <label for="itemName" class="form-label">  Item Name :</label>
-          <h4 id="itemName">__________________________</h4>
-        </div>
+            <div id="ItemNameDiv">
+              <label for="itemName" class="form-label">  Item Name :</label>
+              <h5 id="itemName">______________________________</h5>
+            </div>
 
-        <div id="ItemQutDiv">
-          <label for="itemQut" class="form-label">  Hand On Quantity :</label>
-          <h4 id="itemQut">__________</h4>
-        </div>
+            <div id="ItemQutDiv">
+              <label for="itemQut" class="form-label">  Hand On Quantity :</label>
+              <h5 id="itemQut">_____________</h5>
+            </div>
 
-        <div id="ItemPriceDiv">
-          <label for="itemPrice" class="form-label">  Unite Price :</label>
-          <h4 id="itemPrice">________</h4>
-        </div>
+            <div id="ItemPriceDiv">
+              <label for="itemPrice" class="form-label">  Unite Price :</label>
+              <h5 id="itemPrice">___________</h5>
+            </div>
 
-        <div class="mb-3">
-          <label for="quantity" class="form-label">Quantity</label>
-          <input type="number" class="form-control" id="quantity_placeOrder">
-        </div>
+            <div class="mb-3">
+              <label for="quantity" class="form-label">Quantity</label>
+              <input type="number" class="form-control" id="quantity_placeOrder">
+            </div>
 
-        <div id="placeOrderbtns" class="mt-4">
-          <button type="button" class="btn btn-success">Add</button>
+            <div id="placeOrderbtns" class="mt-4">
+              <button type="button" class="btn btn-success">Add</button>
+              <button id="placeOrderbtnResetbtn" type="reset" class="btn btn-warning">Reset</button>
+            </div>
+          </div>
         </div>
       </form>
     </div>
     <!--Table-->
     <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col12">
-      <table class="table">
+      <table id="tblPalceOrder" class="table">
         <thead>
         <tr>
           <th class="table-heading" scope="col">Item_ID</th>
+          <th class="table-heading" scope="col">Unite_Price</th>
           <th class="table-heading" scope="col">Quantity</th>
           <th class="table-heading" scope="col">Total</th>
+          <th class="table-heading" scope="col">Status</th>
         </tr>
         </thead>
         <tbody class="table-tr" id="placeOrder-tbody"></tbody>
@@ -248,6 +258,7 @@
 
 <script src="assest/lib/jquery.min.js"></script>
 <script src="assest/bootstrap-5/js/bootstrap.min.js"></script>
+<script src="assest/fontawesome-free-6/js/all.min.js"></script>
 
 <script type="module" src="Controller/PlaceOrder.js"></script>
 <script type="module" src="Controller/ItemController.js"></script>

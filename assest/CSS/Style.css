@@ -302,11 +302,24 @@
 }
 
 #PlaceOrderTextField{
+
+}
+
+#placeOrderText1{
+    border: 2px solid #0d6efd;
+    border-radius: 10px;
+    background-color: #a3cfbb;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    margin-bottom: 10px;
+}
+
+#placeOrderText2{
     border: 2px solid #0d6efd;
     border-radius: 10px;
     background-color: #a3cfbb;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
 }
+
 
 #customerbtns{
     margin-bottom: 30px;
@@ -348,7 +361,7 @@
 #ItemNameDiv{
     display: inline-block;
     border: 1px solid grey;
-    width: 355px;
+    width: 325px;
     border-radius: 5px;
 }
 
@@ -366,6 +379,15 @@
     border-radius: 5px;
 }
 
+.removeButton{
+    background-color: red;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    width: 57px;
+    height: 29px;
+    padding: 0;
+}
 
 
 
