@@ -1,8 +1,7 @@
 import {ItemModel} from "../model/ItemModel.js"
 import {item_db} from "../db/db.js";
 
-
-const loadStudentData = () =>{
+const loadItemData = () =>{
     $("#item-tbl-body").empty();
     item_db.map((item,index) => {
         let recode = `<tr><td class='item_id'>${item.item_id}</td><td class='item_name'>${item.item_name}</td><td class='quantity'>${item.quantity}</td><td class='price'>${item.price}</td><td class='description'>${item.description}</td></tr>`
@@ -64,7 +63,7 @@ $("#storebtns>button[type='button']").eq(0).on("click", () => {
                         item_db.push(item_obj);
                         $("#storebtns>button[type='reset']").click();
 
-                        loadStudentData();
+                        loadItemData();
                     }
                 }
             }
@@ -148,13 +147,12 @@ $("#storebtns>button[type='button']").eq(1).on("click", () => {
                         item_db[index]=item_obj;
 
                         $("#storebtns>button[type='reset']").click();
-
-                        loadStudentData();
                     }
                 }
             }
         }
     }
+    loadItemData();
 });
 
 //Delete
@@ -178,7 +176,7 @@ $("#storebtns>button[type='button']").eq(2).on("click", () => {
             )
             let index= item_db.findIndex(item => item.item_id === item_id);
             item_db.splice(index,1);
-            loadStudentData()
+            loadItemData();
             $("#storebtns>button[type='reset']").click();
         }
     })

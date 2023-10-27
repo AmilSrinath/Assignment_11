@@ -59,6 +59,7 @@ $("#customerbtns>button[type='button']").eq(0).on("click", () => {
             }
         }
     }
+    generateNewCusID();
 });
 
 //Row Click
@@ -160,3 +161,15 @@ $("#customerbtns>button[type='button']").eq(2).on("click", () => {
         }
     })
 })
+
+
+//ID Generate
+/*const generateNewCusID = () => {
+    if (customer_db.length === 0) {
+        $('#cus_id').val(1);
+    } else {
+        let lastElement = customer_db[customer_db.length - 1];
+        $('#cus_id').val((parseInt(lastElement.cus_id)) + 1);
+    }
+}*/
+
