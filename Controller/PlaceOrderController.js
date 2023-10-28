@@ -146,15 +146,6 @@ $("#place_Order").on("click", () => {
         }
     });
 
-    let date = $('#currentDate').text();
-    let orderID = $('#Order_id').val();
-    let cusID = $('#selectCus_ID').val();
-
-    let recode = `<tr><td class='date'>${date}</td><td class='order_id'>${orderID}</td><td class='cus_id'>${cusID}</td><td class='net_total'>${netTotal}</td></tr>`
-    $("#OrderHistory-tbody").append(recode);
-
-    $('#placeOrder-tbody>tr').remove();
-
     if (amount >= netTotal) {
         let cash = amount - netTotal;
         Swal.fire({
@@ -162,6 +153,17 @@ $("#place_Order").on("click", () => {
             title: `Order Successful! \n Cash: ${cash.toFixed(2)}`,
             showConfirmButton: true
         });
+        $('#placeOrderbtnResetbtn').click();
+        $('#amount').val("");
+        $('#tot').text(0);
+
+        let date = $('#currentDate').text();
+        let orderID = $('#Order_id').val();
+        let cusID = $('#selectCus_ID').val();
+
+        let recode = `<tr><td class='date'>${date}</td><td class='order_id'>${orderID}</td><td class='cus_id'>${cusID}</td><td class='net_total'>${netTotal}</td></tr>`
+        $("#OrderHistory-tbody").append(recode);
+
     } else {
         Swal.fire({
             icon: 'error',
@@ -170,7 +172,4 @@ $("#place_Order").on("click", () => {
         });
     }
     loadItemData();
-    $('#placeOrderbtnResetbtn').click();
-    $('#amount').val("");
-    $('#tot').text(0);
 });
