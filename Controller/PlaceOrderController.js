@@ -1,5 +1,5 @@
-import {item_db} from "../db/db.js";
-import {ItemModel} from "../model/ItemModel.js";
+import {customer_db, item_db, placeOrder_db} from "../db/db.js";
+import {PlaceOrderHistory} from "../model/PlaceOrderHistory.js";
 
 let ItemIndexElement;
 
@@ -120,7 +120,6 @@ $("#placeOrderbtnResetbtn").eq(0).on("click", () => {
     $('#placeOrder-tbody>tr').remove();
 });
 
-
 //PlaceOrder Button
 $("#place_Order").on("click", () => {
     let amount = parseFloat($('#amount').val());
@@ -138,7 +137,6 @@ $("#place_Order").on("click", () => {
             if (newQuantity >= 0) {
                 item_db[index].quantity = newQuantity;
             } else {
-                // Handle the case where the new quantity would be negative (out of stock)
                 console.log("Error: Not enough quantity in stock for item with ID " + item_id);
             }
         } else {
@@ -158,11 +156,16 @@ $("#place_Order").on("click", () => {
         $('#tot').text(0);
 
         let date = $('#currentDate').text();
-        let orderID = $('#Order_id').val();
+        let orderID = $('#Order_id').text();
         let cusID = $('#selectCus_ID').val();
 
         let recode = `<tr><td class='date'>${date}</td><td class='order_id'>${orderID}</td><td class='cus_id'>${cusID}</td><td class='net_total'>${netTotal}</td></tr>`
         $("#OrderHistory-tbody").append(recode);
+
+        let placeOrderHistory = new PlaceOrderHistory(date,orderID,cusID,netTotal);
+        placeOrder_db.push(placeOrderHistory);
+
+        generateNewOrderID();
 
     } else {
         Swal.fire({
@@ -173,3 +176,16 @@ $("#place_Order").on("click", () => {
     }
     loadItemData();
 });
+
+
+//ID Generate
+const generateNewOrderID = () => {
+    if (placeOrder_db.length === 0) {
+        $('#Order_id').text(1);
+    } else {
+        let lastElement = placeOrder_db[placeOrder_db.length - 1];
+        $('#Order_id').text((parseInt(lastElement.order_id)) + 1);
+    }
+
+    console.log(placeOrder_db.length);
+}

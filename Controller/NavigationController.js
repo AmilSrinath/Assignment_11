@@ -1,11 +1,31 @@
-import {customer_db, item_db} from "../db/db.js";
+import {customer_db, item_db, placeOrder_db} from "../db/db.js";
 
-const loadStudentData = () =>{
+//ID Generate
+const loadCustomerData = () =>{
     $("#customer-tbl-body").empty();
     customer_db.map((customer,index) => {
         let recode = `<tr><td class='customer_id'>${customer.cus_id}</td><td class='name'>${customer.name}</td><td class='nic'>${customer.nic}</td><td class='address'>${customer.address}</td></tr>`
         $("#customer-tbl-body").append(recode);
     })
+}
+
+//ID Generate
+const loadItemData = () =>{
+    $("#item-tbl-body").empty();
+    item_db.map((item,index) => {
+        let recode = `<tr><td class='item_id'>${item.item_id}</td><td class='item_name'>${item.item_name}</td><td class='quantity'>${item.quantity}</td><td class='price'>${item.price}</td><td class='description'>${item.description}</td></tr>`
+        $("#item-tbl-body").append(recode);
+    })
+}
+
+//ID Generate
+const generateNewOrderID = () => {
+    if (placeOrder_db.length === 0) {
+        $('#Order_id').text(1);
+    } else {
+        let lastElement = placeOrder_db[placeOrder_db.length - 1];
+        $('#Order_id').text((parseInt(lastElement.order_id)) + 1);
+    }
 }
 
 $("#customer-nav").on('click',()=>{
@@ -14,14 +34,14 @@ $("#customer-nav").on('click',()=>{
     $("#placeOrderForm").css('display','none');
     $("#myTabContent").css('display','none');
     $("#OrderHistoryForm").css('display','none');
-    loadStudentData();
+    loadCustomerData();
     //ID Generate
-    /*if (customer_db.length === 0){
-        $('#cus_id').val(1);
+    if (customer_db.length === 0){
+        $('#cus_id').text(1);
     }else {
         let lastElement = customer_db[customer_db.length - 1];
-        $('#cus_id').val((parseInt(lastElement.cus_id))+1);
-    }*/
+        $('#cus_id').text((parseInt(lastElement.cus_id))+1);
+    }
 
 });
 
@@ -31,6 +51,16 @@ $("#store-nav").on('click',()=>{
     $("#placeOrderForm").css('display','none');
     $("#myTabContent").css('display','none');
     $("#OrderHistoryForm").css('display','none');
+
+    loadItemData();
+
+    //ID Generate
+    if (item_db.length === 0){
+        $('#item_id').text(1);
+    }else {
+        let lastElement = item_db[item_db.length - 1];
+        $('#item_id').text((parseInt(lastElement.item_id))+1);
+    }
 });
 
 $("#place-order-nav").on('click',()=>{
@@ -57,6 +87,8 @@ $("#place-order-nav").on('click',()=>{
     $('#itemName').text("______________________________");
     $('#itemQut').text("_____________");
     $('#itemPrice').text("___________");
+
+    generateNewOrderID();
 });
 
 $("#OrderHistory-nav").on('click',()=>{

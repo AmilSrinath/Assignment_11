@@ -11,7 +11,7 @@ const loadStudentData = () =>{
 
 //Submit
 $("#customerbtns>button[type='button']").eq(0).on("click", () => {
-    let cus_id = $("#cus_id").val();
+    let cus_id = $("#cus_id").text();
     let name = $("#name").val();
     let nic = $("#nic").val();
     let address = $("#address").val();
@@ -64,13 +64,13 @@ $("#customerbtns>button[type='button']").eq(0).on("click", () => {
 
 //Row Click
 let index;
+let cus_id;
 $("tbody").on("click", "tr", function() {
-    let cus_id = $(this).find(".customer_id").text();
+    cus_id = $(this).find(".customer_id").text();
     let name = $(this).find(".name").text();
     let nic = $(this).find(".nic").text();
     let address = $(this).find(".address").text();
 
-    $("#cus_id").val(cus_id);
     $("#name").val(name);
     $("#nic").val(nic);
     $("#address").val(address);
@@ -80,7 +80,6 @@ $("tbody").on("click", "tr", function() {
 
 //Update
 $("#customerbtns>button[type='button']").eq(1).on("click", () => {
-    let cus_id = $("#cus_id").val();
     let name = $("#name").val();
     let nic = $("#nic").val();
     let address = $("#address").val();
@@ -136,7 +135,6 @@ $("#customerbtns>button[type='button']").eq(1).on("click", () => {
 });
 
 $("#customerbtns>button[type='button']").eq(2).on("click", () => {
-    let cus_id = $("#cus_id").val();
     let cus_name = $("#name").val();
 
     Swal.fire({
@@ -158,18 +156,19 @@ $("#customerbtns>button[type='button']").eq(2).on("click", () => {
             customer_db.splice(index,1);
             loadStudentData()
             $("button[type='reset']").click();
+            generateNewCusID();
         }
     })
 })
 
 
 //ID Generate
-/*const generateNewCusID = () => {
+const generateNewCusID = () => {
     if (customer_db.length === 0) {
-        $('#cus_id').val(1);
+        $('#cus_id').text(1);
     } else {
         let lastElement = customer_db[customer_db.length - 1];
-        $('#cus_id').val((parseInt(lastElement.cus_id)) + 1);
+        $('#cus_id').text((parseInt(lastElement.cus_id)) + 1);
     }
-}*/
+}
 
