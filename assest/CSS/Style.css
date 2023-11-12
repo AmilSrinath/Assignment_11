@@ -402,6 +402,23 @@
     color: white;
 }
 
+#netTotal,#netTot{
+    display: inline-block;
+}
+
+#calculate{
+    background-color: #0d6efd;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#calculate:hover{
+    letter-spacing: 0.8px;
+    cursor: pointer;
+}
+
+
 
 
 

@@ -123,7 +123,7 @@ $("#placeOrderbtnResetbtn").eq(0).on("click", () => {
 //PlaceOrder Button
 $("#place_Order").on("click", () => {
     let amount = parseFloat($('#amount').val());
-    let netTotal = parseFloat($('#tot').text());
+    let netTotal = parseFloat($('#netTotal').text());
 
     $("#placeOrder-tbody tr").each(function() {
         let quantity = parseFloat($(this).find('.quantity').text());
@@ -166,7 +166,8 @@ $("#place_Order").on("click", () => {
         placeOrder_db.push(placeOrderHistory);
 
         generateNewOrderID();
-
+        $('#netTotal').text(0);
+        $('#discount').val(0);
     } else {
         Swal.fire({
             icon: 'error',
@@ -175,6 +176,13 @@ $("#place_Order").on("click", () => {
         });
     }
     loadItemData();
+});
+
+$("#calculate").on("click", () => {
+    let tot = $("#tot").text();
+    let discount = $("#discount").val();
+
+    $('#netTotal').text(tot*(discount/100));
 });
 
 

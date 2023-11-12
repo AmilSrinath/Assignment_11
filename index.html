@@ -221,8 +221,20 @@
         </thead>
         <tbody class="table-tr" id="placeOrder-tbody"></tbody>
       </table>
+
       <p id="total" class="fs-2">Total :</p>
       <h2 id="tot">0</h2>
+
+      <div class="input-group mt-2 mb-2">
+        <label for="discount"></label>
+        <input id="discount" placeholder="Discount" type="number" class="form-control">
+        <span class="input-group-text">%</span>
+        <button id="calculate">Calculate</button>
+      </div>
+
+      <p id="netTot" class="fs-2">Net Total :</p>
+      <h2 id="netTotal">0</h2>
+
       <label for="amount"></label>
       <input id="amount" type="number" class="form-control" placeholder="Amount">
 
